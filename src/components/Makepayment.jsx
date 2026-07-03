@@ -5,7 +5,7 @@ const Makepayment = () => {
     const location = useLocation()
     const { singleproduct, cartItems, total } = location.state || {}
 
-    const imagepath = "http://rodriquekifaru.alwaysdata.net/static/images/"
+    const imagepath = "https://rodriquekifaru.alwaysdata.net/static/images/"
 
     // Check if we're coming from cart or single product
     const isFromCart = cartItems && cartItems.length > 0
@@ -28,7 +28,7 @@ const Makepayment = () => {
         formdata.append("amount", paymentAmount)
         formdata.append("phone", phone)
         try {
-            const response = await axios.post("http://rodriquekifaru.alwaysdata.net/api/mpesa_payment", formdata)
+            const response = await axios.post("https://rodriquekifaru.alwaysdata.net/api/mpesa_payment", formdata)
             setSuccess(response.data.message)
             setLoading("")
         } catch (error) {

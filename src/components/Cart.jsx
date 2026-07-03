@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 const Cart = () => {
   const [cartItems, setCartItems] = useState([]);
   const navigate = useNavigate();
-  const imagepath = "http://rodriquekifaru.alwaysdata.net/static/images/";
+  const imagepath = "https://rodriquekifaru.alwaysdata.net/static/images/";
 
   // Load cart from localStorage on mount
   useEffect(() => {

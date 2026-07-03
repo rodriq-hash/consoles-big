@@ -40,7 +40,7 @@ const Getproduct = () => {
     setLoading("Please wait...")
 
     try {
-      const response = await axios.get("http://rodriquekifaru.alwaysdata.net/api/getproducts")
+      const response = await axios.get("https://rodriquekifaru.alwaysdata.net/api/getproducts")
       setProduct(response.data)
       setLoading("")
     } catch (error) {
@@ -61,7 +61,7 @@ const Getproduct = () => {
   }, [navigate])
 
   console.log(products)
-  const imagepath = "http://rodriquekifaru.alwaysdata.net/static/images/"
+  const imagepath = "https://rodriquekifaru.alwaysdata.net/static/images/"
 
   // Function to add product to cart
   const addToCart = (product) => {

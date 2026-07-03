@@ -38,7 +38,7 @@ const Signin = () => {
         formdata.append('email', email)
         formdata.append('password', password)
         try {
-            const response = await axios.post("http://rodriquekifaru.alwaysdata.net/api/signin", formdata)
+            const response = await axios.post("https://rodriquekifaru.alwaysdata.net/api/signin", formdata)
             setSuccess(response.data.message)
             setLoading("")
             if (response.data.user) {
