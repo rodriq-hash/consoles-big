@@ -4,8 +4,6 @@ import { useNavigate } from 'react-router-dom'
 
 const Addproduct = () => {
     const navigate = useNavigate()
-    const [user, setUser] = useState(null)
-    
     // declare our states here 
     const [product_name, setProductName] = useState("")
     const [product_description, setProductDescription] = useState("")
@@ -73,7 +71,6 @@ const Addproduct = () => {
             navigate('/')
             return
         }
-        setUser(storedUser)
     }, [navigate])
 
     return (
