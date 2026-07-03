@@ -40,7 +40,7 @@ const Signin = () => {
         formdata.append('email', email)
         formdata.append('password', password)
         try {
-            const response = await axios.post("https://rodriquekifaru.alwaysdata.net/api/signin", formdata)
+            const response = await axios.post("/api/signin", formdata)
             setLoading("")
             if (response.data.user) {
                 // Mark as regular user (not admin)

@@ -30,7 +30,7 @@ const Signup = () => {
     formdata.append("password", password)
     formdata.append("phone", phone)
     try {
-      const response = await axios.post("https://rodriquekifaru.alwaysdata.net/api/signup", formdata)
+      const response = await axios.post("/api/signup", formdata)
       setLoading("")
       if (response.data.message?.toLowerCase().includes("successful")) {
         setSuccess(response.data.message)
