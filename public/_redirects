@@ -1,0 +1,3 @@
+/api/signup /.netlify/functions/signup 200
+/api/signin /.netlify/functions/signin 200
+/* /index.html 200

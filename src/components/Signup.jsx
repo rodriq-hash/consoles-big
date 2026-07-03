@@ -1,6 +1,6 @@
 import axios from 'axios'
 import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 const Signup = () => {
   // declare our state here
@@ -14,11 +14,14 @@ const Signup = () => {
   const [success, setSuccess] = useState("")
   const [error, setError] = useState("")
   const [strength, setStrength] = useState("")
+  const navigate = useNavigate()
 
   // function to handle submit
   const handlesubmit = async (e) => {
     e.preventDefault()
     setLoading("Please wait...")
+    setError("")
+    setSuccess("")
 
     // create an empty digital envelope 
     const formdata = new FormData()
@@ -27,11 +30,16 @@ const Signup = () => {
     formdata.append("password", password)
     formdata.append("phone", phone)
     try {
-      const response = await axios.post("http://rodriquekifaru.alwaysdata.net/api/signup", formdata)
-      setSuccess(response.data.message)
+      const response = await axios.post("/api/signup", formdata)
       setLoading("")
+      if (response.data.message?.toLowerCase().includes("successful")) {
+        setSuccess(response.data.message)
+        navigate("/signin")
+      } else {
+        setError(response.data.message || "Signup failed. Please try again.")
+      }
     } catch (error) {
-      setError(error.message)
+      setError(error.response?.data?.message || error.message)
       setLoading("")
     }
   }

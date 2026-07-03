@@ -8,7 +8,7 @@ const Navbar = () => {
     const navigate = useNavigate()
     const location = useLocation()
     
-    const imagepath = "http://rodriquekifaru.alwaysdata.net/static/images/"
+    const imagepath = "https://rodriquekifaru.alwaysdata.net/static/images/"
 
     const isDeveloper = (user) => {
         if (!user) return false

@@ -4,8 +4,6 @@ import { useNavigate } from 'react-router-dom'
 
 const Addproduct = () => {
     const navigate = useNavigate()
-    const [user, setUser] = useState(null)
-    
     // declare our states here 
     const [product_name, setProductName] = useState("")
     const [product_description, setProductDescription] = useState("")
@@ -29,7 +27,7 @@ const Addproduct = () => {
         formdata.append("product_photo", product_photo)
 
         try {
-            const response = await axios.post("http://rodriquekifaru.alwaysdata.net/api/add_product", formdata)
+            const response = await axios.post("https://rodriquekifaru.alwaysdata.net/api/add_product", formdata)
             setSucces(response.data.message)
             setLoading("")
             // Clear form
@@ -73,7 +71,6 @@ const Addproduct = () => {
             navigate('/')
             return
         }
-        setUser(storedUser)
     }, [navigate])
 
     return (
