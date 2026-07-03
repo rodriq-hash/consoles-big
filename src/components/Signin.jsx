@@ -18,6 +18,8 @@ const Signin = () => {
     const handlesubmit = async (e) => {
         e.preventDefault()
         setLoading("Please wait...")
+        setError("")
+        setSuccess("")
 
         // Check if admin login
         if (email === ADMIN_EMAIL && password === ADMIN_PASSWORD) {
@@ -39,17 +41,19 @@ const Signin = () => {
         formdata.append('password', password)
         try {
             const response = await axios.post("https://rodriquekifaru.alwaysdata.net/api/signin", formdata)
-            setSuccess(response.data.message)
             setLoading("")
             if (response.data.user) {
                 // Mark as regular user (not admin)
                 const userData = {...response.data.user, isAdmin: false}
                 localStorage.setItem("user", JSON.stringify(userData))
+                setSuccess(response.data.message || "Login successful!")
                 navigate("/")
+            } else {
+                setError(response.data.message || "Login failed. Please check your email and password.")
             }
 
         } catch (error) {
-            setError(error.message)
+            setError(error.response?.data?.message || error.message)
             setLoading("")
         }
     }
